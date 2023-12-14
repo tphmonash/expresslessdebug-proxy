@@ -1,6 +1,5 @@
 'use strict';
 
-var debug = require('debug');
 var express = require('express');
 var request = require('supertest');
 var proxy = require('../');
@@ -19,11 +18,9 @@ describe('trace debugging does not cause the application to fail', function () {
   });
 
   beforeEach(function () {
-    debug.enable('express-http-proxy');
   });
 
   afterEach(function () {
-    debug.disable('express-http-proxy');
   });
 
   it('happy path', function (done) {

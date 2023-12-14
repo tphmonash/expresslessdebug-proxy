@@ -6,7 +6,6 @@
 
 var ScopeContainer = require('./lib/scopeContainer');
 var assert = require('assert');
-var debug = require('debug')('express-http-proxy');
 
 var buildProxyReq                = require('./app/steps/buildProxyReq');
 var copyProxyResHeadersToUserRes = require('./app/steps/copyProxyResHeadersToUserRes');
@@ -27,7 +26,6 @@ module.exports = function proxy(host, userOptions) {
   assert(host, 'Host should not be empty');
 
   return function handleProxy(req, res, next) {
-    debug('[start proxy] ' + req.path);
     var container = new ScopeContainer(req, res, next, host, userOptions);
 
     filterUserRequest(container)
