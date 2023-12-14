@@ -1,7 +1,6 @@
 'use strict';
 
 var as = require('../../lib/as.js');
-var debug = require('debug')('express-http-proxy');
 var zlib = require('zlib');
 
 function isResGzipped(res) {
@@ -59,7 +58,6 @@ function decorateProxyResBody(container) {
   var originalResData;
 
   if (res.statusCode === 304) {
-    debug('Skipping userResDecorator on response 304');
     return Promise.resolve(container);
   }
 

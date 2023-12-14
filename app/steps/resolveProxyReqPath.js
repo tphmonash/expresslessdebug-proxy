@@ -1,7 +1,6 @@
 'use strict';
 
 var url = require('url');
-var debug = require('debug')('express-http-proxy');
 
 function defaultProxyReqPathResolver(req) {
   return url.parse(req.url).path;
@@ -14,7 +13,6 @@ function resolveProxyReqPath(container) {
     .resolve(resolverFn(container.user.req))
     .then(function (resolvedPath) {
       container.proxy.reqBuilder.path = resolvedPath;
-      debug('resolved proxy path:', resolvedPath);
       return Promise.resolve(container);
     });
 }
